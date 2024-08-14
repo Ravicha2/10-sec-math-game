@@ -1,0 +1,1 @@
+$('.currentScore').append('current score')
