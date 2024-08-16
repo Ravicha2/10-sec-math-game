@@ -13,7 +13,7 @@
     <link href="style.css" rel="stylesheet">
   </head>
   <body>
-    <h1 class="Currentscore">Current Score:</h1>
+    <h1 class="Currentscore">Current Score: <span id="currentscore"></span></h1>
     <h1 class="Highscore">High Score:</h1>
     <div class="col-xs-12">
         <div class="chart-container">
@@ -21,10 +21,9 @@
         </div>
         <p style="text-align: center;">time left</p> 
         <div id="question">
-            <p>10+5</p>
         </div>
         <form id="answer-box">
-            <input id="answer" type="text" placeholder="answer" required/>
+            <input id="answer" type="number"/>
         </form>
     </div>    
   </body>
