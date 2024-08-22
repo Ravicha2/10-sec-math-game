@@ -6,11 +6,12 @@ $(document).ready(function (){
     var currentAns;
     var startButton = document.getElementById('starter');
     var countdownFunc;
-
+    var mod1 = 10;
+    var mod2 = 1;
     var questionGen = function () {
         $('#question').empty();
-        var num1 = Math.floor((Math.random())*10+1);
-        var num2 = Math.floor((Math.random())*10+1);
+        var num1 = Math.floor((Math.random())*mod1+mod2);
+        var num2 = Math.floor((Math.random())*mod1+mod2);
         $('#question').append('<p>'+ num1 + " + " + num2 + '</p>');
         currentAns = num1 + num2;
         ansInput.value = "";
@@ -29,14 +30,17 @@ $(document).ready(function (){
         countdownFunc = setInterval(function() {
             countdownValue--;
             $('.countdown').text(countdownValue);
-            
+            //$('#starter').remove();
             if (countdownValue <= 0) {
                 clearInterval(countdownFunc);
                 questionGen();
                 ansInput.value = "";
                 currentScore = 0;
                 $('.Currentscore').text("Current score: "+currentScore);
+                //$('.start').append('<button id="starter">start</button>');
+                //$('#starter').addEventListener('click',timefunc);
             }
+            
         }, 1000);
     }
 
@@ -51,6 +55,28 @@ $(document).ready(function (){
     });
 
     questionGen();
-
+    
     startButton.addEventListener('click', timefunc);
+    
+    var modeSelection = document.getElementById('mode');
+    modeSelection.addEventListener('change', function(e) {
+        var selected = e.target.value;
+        console.log(selected+' is selected');
+        if (selected === 'easy') {
+            mod1 = 9;
+            mod2 = 1;
+        }
+        if (selected === 'normal') {
+            mod1 = 20;
+            mod2 = 10;
+        }
+        if (selected === 'hard') {
+            mod1 = 37;
+            mod2 = 23;
+        }
+        if (selected === 'asian') {
+            mod1 = 103;
+            mod2 = 17;
+        }
+    })
 });
