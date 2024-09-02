@@ -1,13 +1,13 @@
-$(document).ready(function (){
+$(document).ready(function () {
     var ansInput = document.getElementById('answer');
     var currentScore = 0;
     var highscore = 0;
     var countdownValue = 0;
     var currentAns;
-    var startButton = document.getElementById('starter');
     var countdownFunc;
     var mod1 = 10;
     var mod2 = 1;
+
     var questionGen = function () {
         $('#question').empty();
         var num1 = Math.floor((Math.random())*mod1+mod2);
@@ -30,15 +30,14 @@ $(document).ready(function (){
         countdownFunc = setInterval(function() {
             countdownValue--;
             $('.countdown').text(countdownValue);
-            //$('#starter').remove();
+            $('#starter').remove();
             if (countdownValue <= 0) {
                 clearInterval(countdownFunc);
                 questionGen();
                 ansInput.value = "";
                 currentScore = 0;
                 $('.Currentscore').text("Current score: "+currentScore);
-                //$('.start').append('<button id="starter">start</button>');
-                //$('#starter').addEventListener('click',timefunc);
+                $('.start').append('<button id="starter">start</button>');
             }
             
         }, 1000);
@@ -56,7 +55,8 @@ $(document).ready(function (){
 
     questionGen();
     
-    startButton.addEventListener('click', timefunc);
+    // Delegate the click event to the parent element
+    $(document).on('click', '#starter', timefunc);
     
     var modeSelection = document.getElementById('mode');
     modeSelection.addEventListener('change', function(e) {
@@ -78,5 +78,5 @@ $(document).ready(function (){
             mod1 = 103;
             mod2 = 17;
         }
-    })
+    });
 });
