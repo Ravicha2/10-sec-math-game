@@ -1,6 +1,6 @@
 # 10-sec-math-game
 
-Click (here) to play[https://ravicha2.github.io/10-sec-math-game/]
+Play [here](https://ravicha2.github.io/10-sec-math-game/)
 
 Minimum requirements:
 1. An input for the user to type the answer.
